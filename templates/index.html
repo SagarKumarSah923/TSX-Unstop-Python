@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section id="about">
+    <h2>About Me</h2>
+    <p>{{ data.about }}</p>
+</section>
+
+<section id="skills">
+    <h2>Skills</h2>
+    <ul>
+        {% for skill in data.skills %}
+        <li>{{ skill }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section id="projects">
+    <h2>Projects</h2>
+    <ul>
+        {% for project in data.projects %}
+        <li>
+            <strong>{{ project.title }}</strong> - {{ project.description }}
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section id="education">
+    <h2>Education</h2>
+    <ul>
+        {% for edu in data.education %}
+        <li>
+            <strong>{{ edu.degree }}</strong> - {{ edu.institution }} ({{ edu.year }})
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section id="certifications">
+    <h2>Certifications</h2>
+    <ul>
+        {% for cert in data.certifications %}
+        <li>{{ cert }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <p><strong>Email:</strong> {{ data.contact.email }}</p>
+    <p><strong>Phone:</strong> {{ data.contact.phone }}</p>
+    <p><strong>GitHub:</strong> <a href="{{ data.contact.github }}" target="_blank">{{ data.contact.github }}</a></p>
+    <p><strong>LinkedIn:</strong> <a href="{{ data.contact.linkedin }}" target="_blank">{{ data.contact.linkedin }}</a></p>
+
+    <form id="contactForm">
+        <input type="text" id="name" name="name" placeholder="Name" required>
+        <input type="email" id="email" name="email" placeholder="Email" required>
+        <textarea id="message" name="message" rows="4" placeholder="Message" required></textarea>
+        <button type="submit">Send</button>
+    </form>
+</section>
+{% endblock %}
